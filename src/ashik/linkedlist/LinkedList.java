@@ -3,6 +3,7 @@ package ashik.linkedlist;
 public class LinkedList {
 
 	static Node head;
+	static Node head2;
 
     static class Node {
 
