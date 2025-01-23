@@ -6,8 +6,8 @@ import java.util.Stack;
 
 import ashik.stack.LinkedList.TreeNode;
 
-//Leetcode 94
-public class InorderTraversal {
+//Leetcode 144
+public class PreorderTraversal {
 
 	public static void main(String[] args) {
 
@@ -29,17 +29,19 @@ public class InorderTraversal {
 			return output_arr;
 		}
 		
-		TreeNode current = head;
+		stack.push(head);
 		
-		while(current  != null || !stack.isEmpty()) {
-			while(current != null) {
-				stack.push(current);
-				current = current.left;
+		while(!stack.isEmpty()) {
+
+			head = stack.pop();
+			output_arr.add(head.data);
+			if(head.right != null) {
+				stack.push(head.right);
 			}
 			
-			current = stack.pop();
-			output_arr.add(current.data);
-			current = current.right;
+			if(head.left != null) {
+				stack.push(head.left);
+			}
 		}
 		
 		return output_arr;
